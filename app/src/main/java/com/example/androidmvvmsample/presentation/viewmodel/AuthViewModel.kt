@@ -10,8 +10,8 @@ import com.example.androidmvvmsample.domain.usecase.SignInUseCase
 import com.example.androidmvvmsample.utils.ResultWrapper
 import com.example.androidmvvmsample.utils.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jakarta.inject.Inject
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(

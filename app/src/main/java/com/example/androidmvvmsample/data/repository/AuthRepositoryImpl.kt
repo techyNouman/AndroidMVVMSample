@@ -6,7 +6,7 @@ import com.example.androidmvvmsample.data.remote.NetworkService
 import com.example.androidmvvmsample.domain.repository.AuthRepository
 import com.example.androidmvvmsample.utils.ResultWrapper
 import com.example.androidmvvmsample.utils.SafeApiCall
-import jakarta.inject.Inject
+import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val api: NetworkService
