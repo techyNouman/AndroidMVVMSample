@@ -1,3 +1,11 @@
 package com.example.androidmvvmsample.data.model
 
-data class SignInRequest(val email: String, val password: String)
+
+import com.google.gson.annotations.SerializedName
+
+data class SignInRequest(
+    @SerializedName("email")
+    val email: String,
+    @SerializedName("password")
+    val password: String
+)

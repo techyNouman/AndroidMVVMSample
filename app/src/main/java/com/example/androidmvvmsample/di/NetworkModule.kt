@@ -11,12 +11,14 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     @Provides
+    @Singleton
     fun provideInterceptor(sessionManager: SessionManager): Interceptor =
         HeaderInterceptor(sessionManager)
 
@@ -27,7 +29,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(client: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl("BuildConfig.BASE_URL")
+            .baseUrl("https://reqres.in/api")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

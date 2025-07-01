@@ -6,6 +6,6 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface NetworkService {
-    @POST("secure/SignIn")
+    @POST("/login")
     suspend fun signIn(@Body req: SignInRequest): SignInResponse
 }

@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
-    kotlin("kapt")
+    alias(libs.plugins.devtools.ksp)
 }
 
 android {
@@ -19,6 +19,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                argument("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
@@ -36,6 +42,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+    hilt {
+        enableAggregatingTask = false
     }
 }
 
@@ -56,8 +65,6 @@ dependencies {
     implementation(libs.okhttp.logging)
 
     implementation(libs.room.runtime)
-    //noinspection KaptUsageInsteadOfKsp
-    kapt(libs.room.compiler)
 
     implementation(libs.coroutines.android)
 
@@ -67,9 +74,7 @@ dependencies {
     implementation(libs.security.crypto)
 
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-    implementation(libs.hilt.viewmodel)
-    kapt(libs.hilt.ext.compiler)
+    ksp(libs.hilt.android.compiler)
 
     implementation(libs.androidx.security.crypto.ktx)
 
